@@ -1,0 +1,207 @@
+﻿@model Payroll_test.Models.Salary
+@{
+    ViewBag.Title = "GrossSalaryToNet";
+    var selectList = new SelectList(
+        new List<SelectListItem>
+        {
+            new SelectListItem {Text = "Vùng I", Value = "1"},
+            new SelectListItem {Text = "Vùng II", Value = "2"},
+            new SelectListItem {Text = "Vùng III", Value = "3"},
+            new SelectListItem {Text = "Vùng IV", Value = "4"},
+                        }, "Value", "Text");
+}
+
+<h2>Chuyển Lương trước thuế ra lương sau thuế: </h2>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title"> </h3>
+
+            </div>
+            <div class="card-body">
+                <div class="bs-stepper-content">
+                    @using (Html.BeginForm("GrossSalaryToNet", "Salary", FormMethod.Post, new { }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+                        <!-- your steps content here -->
+                        <div id="logins-part" class="content active dstepper-block" role="tabpanel" aria-labelledby="logins-part-trigger">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Thu nhập: </label>
+
+                                @Html.TextBoxFor(x => x.salary, new { @class = "form-control", @placeholder = "VNĐ", @type = "number" })
+                                @Html.ValidationMessageFor(x => x.salary, null, new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Mức lương đóng bảo hiểm: </label>
+                                @Html.TextBoxFor(x => x.premiumSalary, new { @class = "form-control", @placeholder = "VNĐ", @type = "number" })
+                                @Html.ValidationMessageFor(x => x.premiumSalary, null, new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group">
+                                <label>Vùng:</label>
+                                @Html.DropDownListFor(x => x.area, selectList, "- Chọn vùng -", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(x => x.area, null, new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Số người phụ thuộc: </label>
+                                @Html.TextBoxFor(x => x.numberOfDependents, new { @class = "form-control", @placeholder = "(Người)", @type = "number",@Value="0" })
+                                @Html.ValidationMessageFor(x => x.numberOfDependents, null, new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Tính</button>
+                                <a href="/salary/index" class="btn btn-danger">Quay lại</a>
+
+                            </div>
+                        </div>
+
+                    }
+
+                </div>
+            </div>
+            <div class="card-footer">
+
+            </div>
+
+        </div>
+    </div>
+
+    @if (Model != null && Model.salary > 0 && Model.premiumSalary >0 && Model.area>0)
+    {
+<div class="col-md-8">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title"></h3>
+
+                    <div class="card-tools">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Lương trước thuế</th>
+                                <th>Bảo hiểm</th>
+                                <th>Thuế TNCN</th>
+                                <th>Lương sau thuế</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td> @Payroll_test.Common.Common.FormatNumber( Model.salary,0) VNĐ</td>
+                                <td>- @Payroll_test.Common.Common.FormatNumber( Model.premium,0) VNĐ</td>
+                                <td>- @Payroll_test.Common.Common.FormatNumber(Model.personalIncomeTax,0) VNĐ</td>
+                                <td> @Payroll_test.Common.Common.FormatNumber( Model.finalSalary,0) VNĐ</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+
+                </div>
+                <!-- /.card-footer-->
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Chi tiết</h3>
+
+                    <div class="card-tools">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <tr>
+                            <td style="font-weight:bold;">Lương trước thuế</td>
+                            <td> @Payroll_test.Common.Common.FormatNumber(Model.salary, 0)</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:bold;">Bảo hiểm xã hội(8%)</td>
+                            <td>- @Payroll_test.Common.Common.FormatNumber(Decimal.Multiply(Model.premiumSalary, (decimal)0.08), 0) </td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:bold;">Bảo hiểm y tế(1.5%)</td>
+                            <td>- @Payroll_test.Common.Common.FormatNumber(Decimal.Multiply(Model.premiumSalary, (decimal)0.015), 0) </td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:bold;">Bảo hiểm thất nghiệp(1%)</td>
+                            <td>-  @Payroll_test.Common.Common.FormatNumber(Decimal.Multiply(Model.premiumSalary, (decimal)0.01), 0) </td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:bold;">Thu nhập trước thuế</td>
+                            <td>  @Payroll_test.Common.Common.FormatNumber(Model.incomeBeforeTax, 0)</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:bold;">Giảm trừ gia cảnh bản thân</td>
+                            <td>- 11.000.000</td>
+                        </tr>
+                        @if (Model.numberOfDependents > 0)
+                        {
+                            <tr>
+                                <td style="font-weight:bold;">Giảm trừ gia cảnh người phụ thuộc</td>
+                                <td>- @Payroll_test.Common.Common.FormatNumber(Decimal.Multiply(Model.numberOfDependents, (decimal)4400000), 0) </td>
+                            </tr>
+                        }
+                        else
+                        {
+                            <tr>
+                                <td style="font-weight:bold;">Giảm trừ gia cảnh người phụ thuộc</td>
+                                <td>- 0 </td>
+                            </tr>
+                        }
+                        <tr>
+                            <td style="font-weight:bold;">Thu nhập chịu thuế</td>
+                            <td> @Payroll_test.Common.Common.FormatNumber(Model.incomeTaxes, 0)</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:bold;">Thuế thu nhập cá nhân</td>
+                            <td>- @Payroll_test.Common.Common.FormatNumber(Model.personalIncomeTax, 0)</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:bold;">Lương sau thuế </td>
+                            <td> @Payroll_test.Common.Common.FormatNumber(Model.finalSalary, 0)</td>
+                        </tr>
+
+                    </table>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+
+                </div>
+                <!-- /.card-footer-->
+            </div>
+        </div>
+    </div>
+</div>
+
+        
+    }
+</div>
+
+@*@section scripts{
+        <script>
+            $(document).ready(function () {
+                $('.auto').autoNumeric('init');//thu vien cua input "gia"
+                //Nhập vào ô input trên sẽ được auto thêm ".", "," ,ô input dưới sẽ có type hidden (đoạn js này sẽ bỏ các "." và "," để có thể lưu vào sql)
+                $('#demoPrice').bind('blur focusout keypress keyup', function () {
+                    var demoGet = $('#demoPrice').autoNumeric('get');
+                    $('#salary').val(demoGet);
+                    $('#salary').autoNumeric('set', demoGet);
+                });
+            });
+        </script>
+
+    }*@
+@*<input type="text" name="demoPrice" id="demoPrice" class="auto form-control" data-a-dec="," data-a-sep=".">*@
+

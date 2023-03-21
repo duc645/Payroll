@@ -72,8 +72,9 @@ D:\Lamtest_TINHTIENLUONG\Payroll_local\Payroll_test\Payroll_test\bin\System.Web.
 D:\Lamtest_TINHTIENLUONG\Payroll_local\Payroll_test\Payroll_test\bin\Newtonsoft.Json.xml
 D:\Lamtest_TINHTIENLUONG\Payroll_local\Payroll_test\Payroll_test\bin\Antlr3.Runtime.pdb
 D:\Lamtest_TINHTIENLUONG\Payroll_local\Payroll_test\Payroll_test\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\Lamtest_TINHTIENLUONG\Payroll_local\Payroll_test\Payroll_test\obj\Debug\Payroll_test.csproj.AssemblyReference.cache
 D:\Lamtest_TINHTIENLUONG\Payroll_local\Payroll_test\Payroll_test\obj\Debug\Payroll_test.csproj.CoreCompileInputs.cache
 D:\Lamtest_TINHTIENLUONG\Payroll_local\Payroll_test\Payroll_test\obj\Debug\Payroll_test.csproj.CopyComplete
 D:\Lamtest_TINHTIENLUONG\Payroll_local\Payroll_test\Payroll_test\obj\Debug\Payroll_test.dll
 D:\Lamtest_TINHTIENLUONG\Payroll_local\Payroll_test\Payroll_test\obj\Debug\Payroll_test.pdb
+D:\Lamtest_TINHTIENLUONG\Payroll_local\Payroll_test\Payroll_test\bin\FoolproofValidation.dll
+D:\Lamtest_TINHTIENLUONG\Payroll_local\Payroll_test\Payroll_test\obj\Debug\Payroll_test.csproj.AssemblyReference.cache
