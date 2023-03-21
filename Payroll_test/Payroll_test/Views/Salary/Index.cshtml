@@ -4,4 +4,6 @@
 }
 
 <h2>Tính lương</h2>
-@Html.ActionLink("Tính lương trước thuế ra lương sau thuế", "GrossSalaryToNet","Salary",null,new {@class= "btn btn-danger" })
+@Html.ActionLink("Tính lương trước thuế ra lương sau thuế", "GrossSalaryToNet", "Salary", null, new { @class = "btn btn-danger" })
+
+@Html.ActionLink("Tính lương sau thuế ra lương trước thuế", "NetSalaryToGross", "Salary", null, new { @class = "btn btn-success" })

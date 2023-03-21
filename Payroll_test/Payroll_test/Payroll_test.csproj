@@ -178,6 +178,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Salary\Index.cshtml" />
     <Content Include="Views\Salary\GrossSalaryToNet.cshtml" />
+    <Content Include="Views\Salary\NetSalaryToGross.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
