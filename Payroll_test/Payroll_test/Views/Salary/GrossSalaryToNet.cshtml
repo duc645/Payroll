@@ -94,10 +94,10 @@
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>Lương trước thuế</th>
+                                        <th>Lương trước thuế (Gross)</th>
                                         <th>Bảo hiểm</th>
                                         <th>Thuế TNCN</th>
-                                        <th>Lương sau thuế</th>
+                                        <th>Lương sau thuế (Net)</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -130,20 +130,20 @@
                         <div class="card-body">
                             <table class="table table-bordered">
                                 <tr>
-                                    <td style="font-weight:bold;">Lương trước thuế</td>
+                                    <td style="font-weight:bold;">Lương trước thuế (Gross)</td>
                                     <td> @Payroll_test.Common.Common.FormatNumber(Model.salary, 0)</td>
                                 </tr>
                                 <tr>
                                     <td style="font-weight:bold;">Bảo hiểm xã hội(8%)</td>
-                                    <td>- @Payroll_test.Common.Common.FormatNumber(Decimal.Multiply(Model.premiumSalary, (decimal)0.08), 0) </td>
+                                    <td>- @Payroll_test.Common.Common.FormatNumber(Model.socialInsurance, 0) </td>
                                 </tr>
                                 <tr>
                                     <td style="font-weight:bold;">Bảo hiểm y tế(1.5%)</td>
-                                    <td>- @Payroll_test.Common.Common.FormatNumber(Decimal.Multiply(Model.premiumSalary, (decimal)0.015), 0) </td>
+                                    <td>- @Payroll_test.Common.Common.FormatNumber(Model.healthInsurance, 0) </td>
                                 </tr>
                                 <tr>
                                     <td style="font-weight:bold;">Bảo hiểm thất nghiệp(1%)</td>
-                                    <td>-  @Payroll_test.Common.Common.FormatNumber(Decimal.Multiply(Model.premiumSalary, (decimal)0.01), 0) </td>
+                                    <td>-  @Payroll_test.Common.Common.FormatNumber(Model.unemploymentInsurance, 0) </td>
                                 </tr>
                                 <tr>
                                     <td style="font-weight:bold;">Thu nhập trước thuế</td>
@@ -176,7 +176,7 @@
                                     <td>- @Payroll_test.Common.Common.FormatNumber(Model.personalIncomeTax, 0)</td>
                                 </tr>
                                 <tr>
-                                    <td style="font-weight:bold;">Lương sau thuế </td>
+                                    <td style="font-weight:bold;">Lương sau thuế (Net)</td>
                                     <td> @Payroll_test.Common.Common.FormatNumber(Model.finalSalary, 0)</td>
                                 </tr>
 

@@ -9,6 +9,7 @@ namespace Payroll_test.Controllers
 {
     public class SalaryController : Controller
     {
+        public decimal baseSalary = 1490000;
         // GET: Salary
         public ActionResult Index()
         {
@@ -27,8 +28,26 @@ namespace Payroll_test.Controllers
                 ViewData["infoError"] = "Mức lương đóng bảo hiểm phải lớn hơn hoặc bằng mức lương tối thiểu vùng!";
                 return View(model);
             }
+
+            //bảo hiểm lúc đầu
+            model.socialInsurance = Decimal.Multiply(model.premiumSalary, (decimal)0.08);
+            model.healthInsurance = Decimal.Multiply(model.premiumSalary, (decimal)0.015);
+            model.unemploymentInsurance = Decimal.Multiply(model.premiumSalary, (decimal)0.01);
+
+            //tinh lai 3 loai bao hiem// neu lớn hơn 20 lần mức lương cơ sở thì tính = mức lương cs *20
+
+            if (model.premiumSalary > 29800000)
+            {
+                model.socialInsurance = Decimal.Multiply(Decimal.Multiply(baseSalary, (decimal)20), (decimal)0.08);
+                model.healthInsurance = Decimal.Multiply(Decimal.Multiply(baseSalary, (decimal)20), (decimal)0.015);
+            }
+            if(model.premiumSalary> Decimal.Multiply(model.area, (decimal)20))
+            {
+                model.unemploymentInsurance = Decimal.Multiply(Decimal.Multiply(model.area, (decimal)20), (decimal)0.01);
+            }
+
             // tien tru 3 loai bao hiem
-            model.premium = Decimal.Multiply(model.premiumSalary, (decimal)0.105);
+            model.premium = model.socialInsurance + model.healthInsurance + model.unemploymentInsurance;
 
             //so tien bi tinh thue thu nhap neu >11tr
             model.incomeBeforeTax = model.salary - (decimal)model.premium;
@@ -92,8 +111,25 @@ namespace Payroll_test.Controllers
             }
 
 
-            // tien 3 loai bao hiem
-            model.premium = Decimal.Multiply(model.premiumSalary, (decimal)0.105);
+            //bảo hiểm lúc đầu
+            model.socialInsurance = Decimal.Multiply(model.premiumSalary, (decimal)0.08);
+            model.healthInsurance = Decimal.Multiply(model.premiumSalary, (decimal)0.015);
+            model.unemploymentInsurance = Decimal.Multiply(model.premiumSalary, (decimal)0.01);
+
+            //tinh lai 3 loai bao hiem// neu lớn hơn 20 lần mức lương cơ sở thì tính = mức lương cs *20
+
+            if (model.premiumSalary > 29800000)
+            {
+                model.socialInsurance = Decimal.Multiply(Decimal.Multiply(baseSalary, (decimal)20), (decimal)0.08);
+                model.healthInsurance = Decimal.Multiply(Decimal.Multiply(baseSalary, (decimal)20), (decimal)0.015);
+            }
+            if (model.premiumSalary > Decimal.Multiply(model.area, (decimal)20))
+            {
+                model.unemploymentInsurance = Decimal.Multiply(Decimal.Multiply(model.area, (decimal)20), (decimal)0.01);
+            }
+
+            // tien tru 3 loai bao hiem
+            model.premium = model.socialInsurance + model.healthInsurance + model.unemploymentInsurance;
 
 
             //thu nhập làm căn cứ quy đổi (TNQD)

@@ -77,3 +77,4 @@ D:\Lamtest_TINHTIENLUONG\Payroll_local\Payroll_test\Payroll_test\obj\Debug\Payro
 D:\Lamtest_TINHTIENLUONG\Payroll_local\Payroll_test\Payroll_test\obj\Debug\Payroll_test.dll
 D:\Lamtest_TINHTIENLUONG\Payroll_local\Payroll_test\Payroll_test\obj\Debug\Payroll_test.pdb
 D:\Lamtest_TINHTIENLUONG\Payroll_local\Payroll_test\Payroll_test\bin\FoolproofValidation.dll
+D:\Lamtest_TINHTIENLUONG\Payroll_local\Payroll_test\Payroll_test\obj\Debug\Payroll_test.csproj.AssemblyReference.cache

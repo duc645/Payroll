@@ -19,7 +19,6 @@ namespace Payroll_test.Models
 
         [Required(ErrorMessage = "Mời bạn nhập Lương: ")]
         [Range(0, 999999999, ErrorMessage = "Số tiền phải lớn hơn 0")]
-        //[GreaterThan("premiumSalary", ErrorMessage ="Số tiền phải lớn hơn số tiền tối thiểu vùng")]
         public decimal salary { get; set; }
 
         [Required(ErrorMessage = "Mời bạn nhập số người phụ thuộc: ")]
@@ -28,6 +27,11 @@ namespace Payroll_test.Models
 
         // 10.5% bảo hiểm 
         public decimal? premium { get; set; }
+
+        //BHXH - BHYT - BHTN
+        public decimal socialInsurance {get;set;}
+        public decimal healthInsurance { get; set; }
+        public decimal unemploymentInsurance { get; set; }
 
         // thu nhập trước thuế (sau khi trừ đi 10.5% bảo hiểm)
         public decimal incomeBeforeTax {get;set;}

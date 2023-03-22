@@ -136,15 +136,15 @@
                                 </tr>
                                 <tr>
                                     <td style="font-weight:bold;">Bảo hiểm xã hội(8%)</td>
-                                    <td>- @Payroll_test.Common.Common.FormatNumber(Decimal.Multiply(Model.premiumSalary, (decimal)0.08), 0) </td>
+                                    <td>- @Payroll_test.Common.Common.FormatNumber(Model.socialInsurance, 0) </td>
                                 </tr>
                                 <tr>
                                     <td style="font-weight:bold;">Bảo hiểm y tế(1.5%)</td>
-                                    <td>- @Payroll_test.Common.Common.FormatNumber(Decimal.Multiply(Model.premiumSalary, (decimal)0.015), 0) </td>
+                                    <td>- @Payroll_test.Common.Common.FormatNumber(Model.healthInsurance, 0) </td>
                                 </tr>
                                 <tr>
                                     <td style="font-weight:bold;">Bảo hiểm thất nghiệp(1%)</td>
-                                    <td>-  @Payroll_test.Common.Common.FormatNumber(Decimal.Multiply(Model.premiumSalary, (decimal)0.01), 0) </td>
+                                    <td>-  @Payroll_test.Common.Common.FormatNumber(Model.unemploymentInsurance, 0) </td>
                                 </tr>
                                 <tr>
                                     <td style="font-weight:bold;">Thu nhập trước thuế</td>
