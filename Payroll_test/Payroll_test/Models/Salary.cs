@@ -15,7 +15,6 @@ namespace Payroll_test.Models
         public decimal premiumSalary { get; set; }
 
         [Required(ErrorMessage = "Mời bạn chọn vùng: ")]
-        [Range(1, 4, ErrorMessage = "Vùng nằm từ 1 đến 4")]
         public decimal area { get; set; }
 
         [Required(ErrorMessage = "Mời bạn nhập Lương: ")]

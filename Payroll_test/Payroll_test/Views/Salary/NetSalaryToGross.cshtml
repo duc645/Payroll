@@ -4,14 +4,22 @@
     var selectList = new SelectList(
         new List<SelectListItem>
         {
-            new SelectListItem {Text = "Vùng I", Value = "1"},
-            new SelectListItem {Text = "Vùng II", Value = "2"},
-            new SelectListItem {Text = "Vùng III", Value = "3"},
-            new SelectListItem {Text = "Vùng IV", Value = "4"},
-                                }, "Value", "Text");
+            new SelectListItem {Text = "Vùng I", Value = "4680000"},
+            new SelectListItem {Text = "Vùng II", Value = "4160000"},
+            new SelectListItem {Text = "Vùng III", Value = "3640000"},
+            new SelectListItem {Text = "Vùng IV", Value = "3250000"},
+                                        }, "Value", "Text");
 }
 
 <h2>Chuyển lương sau thuế ra lương trước thuế (Net to Gross Salary)</h2>
+@if (ViewData["infoError"] != null)
+{
+    <p style="font-size:20px;" class="text-danger">@ViewData["infoError"] </p>
+    <p class="text-danger">Vùng I: 4,680,000 đồng/tháng </p>
+    <p class="text-danger">Vùng II: 4,160,000 đồng/tháng </p>
+    <p class="text-danger">Vùng III: 3,640,000 đồng/tháng </p>
+    <p class="text-danger">Vùng IV: 3,250,000 đồng/tháng </p>
+}
 <div class="row">
     <div class="col-md-4">
         <div class="card">
@@ -70,7 +78,7 @@
         </div>
     </div>
 
-    @if (Model != null && Model.salary > 0 && Model.premiumSalary > 0 && Model.area > 0)
+    @if (Model != null && Model.salary > 0 && Model.premiumSalary > 0 && Model.area > 0 && Model.premiumSalary >= Model.area)
     {
         <div class="col-md-8">
             <div class="row">
@@ -94,7 +102,7 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        
+
                                         <td> @Payroll_test.Common.Common.FormatNumber(Model.finalSalary, 0) VNĐ</td>
                                         <td>- @Payroll_test.Common.Common.FormatNumber(Model.premium, 0) VNĐ</td>
                                         <td>- @Payroll_test.Common.Common.FormatNumber(Model.personalIncomeTax, 0) VNĐ</td>

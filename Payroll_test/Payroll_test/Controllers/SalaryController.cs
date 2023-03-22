@@ -21,6 +21,12 @@ namespace Payroll_test.Controllers
         [HttpPost]
         public ActionResult GrossSalaryToNet(Salary model)
         {
+            if(model.premiumSalary < model.area)
+            {
+                model.premiumSalary = 0;
+                ViewData["infoError"] = "Mức lương đóng bảo hiểm phải lớn hơn hoặc bằng mức lương tối thiểu vùng!";
+                return View(model);
+            }
             // tien tru 3 loai bao hiem
             model.premium = Decimal.Multiply(model.premiumSalary, (decimal)0.105);
 
@@ -77,6 +83,15 @@ namespace Payroll_test.Controllers
         [HttpPost]
         public ActionResult NetSalaryToGross(Salary model)
         {
+
+            if (model.premiumSalary < model.area)
+            {
+                model.premiumSalary = 0;
+                ViewData["infoError"] = "Mức lương đóng bảo hiểm phải lớn hơn hoặc bằng mức lương tối thiểu vùng!";
+                return View(model);
+            }
+
+
             // tien 3 loai bao hiem
             model.premium = Decimal.Multiply(model.premiumSalary, (decimal)0.105);
 
