@@ -11,7 +11,7 @@ namespace Payroll_test.Models
 
 
         [Required(ErrorMessage = "Mời bạn nhập mức lương đóng bảo hiểm: ")]
-        [Range(0, 999999999, ErrorMessage = "Số tiền phải lớn hơn 0")]
+        [Range(0, 999999999, ErrorMessage = "Số tiền không được là số âm ")]
         public decimal premiumSalary { get; set; }
 
         [Required(ErrorMessage = "Mời bạn chọn vùng: ")]

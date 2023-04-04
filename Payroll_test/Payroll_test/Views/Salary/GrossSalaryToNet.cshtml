@@ -196,19 +196,5 @@
     }
 </div>
 
-@*@section scripts{
-        <script>
-            $(document).ready(function () {
-                $('.auto').autoNumeric('init');//thu vien cua input "gia"
-                //Nhập vào ô input trên sẽ được auto thêm ".", "," ,ô input dưới sẽ có type hidden (đoạn js này sẽ bỏ các "." và "," để có thể lưu vào sql)
-                $('#demoPrice').bind('blur focusout keypress keyup', function () {
-                    var demoGet = $('#demoPrice').autoNumeric('get');
-                    $('#salary').val(demoGet);
-                    $('#salary').autoNumeric('set', demoGet);
-                });
-            });
-        </script>
 
-    }*@
-@*<input type="text" name="demoPrice" id="demoPrice" class="auto form-control" data-a-dec="," data-a-sep=".">*@
 
